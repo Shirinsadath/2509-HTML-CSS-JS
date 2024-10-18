@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11</title>
+</head>
+<body>
+    <h1>MCQs</h1>
+    <form action="" id="quiz">
+        <div class="question">
+            <p>question 1 : which is the capital of china</p>
+            <label for="q1a"><input type="radio" id="q1a" name="q1" value="correct">Beijing</label>
+            <label for="q1b"><input type="radio" id="q1b" name="q1" value="wrong">Shanghai</label>
+            <label for="q1c"><input type="radio" id="q1c" name="q1" value="wrong">Macau</label>
+        </div>
+        <div class="question">
+            <p>question 2 : Which is the capital of </p>
+            <label for="q2a"><input type="radio" id="q2a" name="q2" value="correct">paris</label>
+            <label for="q2b"><input type="radio" id="q2b" name="q2" value="wrong">London</label>
+            <label for="q2c"><input type="radio" id="q2c" name="q2" value="wrong">Berlin</label>
+        </div>
+        <button type="submit" onclick="quiz()">Submit</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        function quiz(){
+            var score = 0;
+            var q=2;
+            var ans = {q1 : "correct",
+                q2 : "correct"
+            };
+            for (var question in ans){
+                var answer = document.querySelector(`input[name="${question}"]:checked`);
+                if(answer){
+                    if (answer.value == "correct")
+                {
+                    score++;
+                    answer.parentElement.style.color = "green";
+                }
+                else{
+                    answer.parentElement.style.color = "red"
+                }
+                }
+            }
+
+            document.getElementById("result").innerText = score + " is the total score";
+        }
+        document.getElementById("quiz").addEventListener("submit", quiz);
+
+    </script>
+</body>
+</html>
